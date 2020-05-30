@@ -1,29 +1,36 @@
-package String_Program;
+package PageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.By.ById;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
+
+import Commonfunctions.CommonFunctions;
 
 
 public class EbayHomePage extends CommonFunctions {
 	
-	public static void main (String[] args) { 
-		
-		//System.setProperty(ChromeDriver, arg1)	
-		/*System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+
-				"\\drivers\\chromedriver.exe");
-		System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-		WebDriver driver= new ChromeDriver();
+	CommonFunctions cf=new CommonFunctions();
+	String textbox_id="gh-ac";
+	String searchBox_xpath ="//*[@id='gh-btn']";
+	String ebay_button_xpath="//*[@id='gh-la']";
+	String healthyAndbeauty_xpath="//li[@class='hl-cat-nav__js-tab']//a[contains(text(),'Health & Beauty')]";
+	String vision_care_xpath="//li[@class='hl-cat-nav__js-tab']//a[contains(text(),'Vision Care')]";
 	
-	driver.manage().window().maximize();
-	driver.navigate().to("https://www.ebay.com");*/
-	WebDriver driver= basicSetup();
-	String textbox="gh-ac";
-	String searchBox="gh-btn";
-	driver.findElement(By.id(textbox)).sendKeys("Badminton");
-	driver.findElement(By.id(searchBox)).click();
+	public void click_Logo() throws InterruptedException {
+		cf.click(ebay_button_xpath);
+	}
+	
+	public void enterText(String text) throws InterruptedException {
+		
+		cf.inputText(textbox_id,text);
+		cf.click(searchBox_xpath);
+	}
+	
+	public void hoverText() {
+		cf.hoverOver(healthyAndbeauty_xpath);
+	}
+	public void click_link() throws InterruptedException {
+		Thread.sleep(5000);
+		cf.click(vision_care_xpath);
+	}
 	
 	
 }

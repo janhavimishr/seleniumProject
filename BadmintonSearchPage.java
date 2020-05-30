@@ -1,4 +1,4 @@
-package String_Program;
+package PageObjects;
 import org.openqa.selenium.By;
 
 public class BadmintonSearchPage extends EbayHomePage {
